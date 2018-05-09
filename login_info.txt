@@ -1,8 +1,0 @@
-Admin User login: 	colteniscool@gmail.com
-Admin User password: 	password
-
-General User #1 login: 		captainprodigy@gmail.com
-General User #1 password: 	password
-
-General User #2 login: 		dinotravman123@gmail.com
-General User #2 password: 	password
