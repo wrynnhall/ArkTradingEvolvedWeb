@@ -1,0 +1,58 @@
+﻿@model ArkTradingEvolvedWeb.Models.CreatureViewModel
+
+@{
+    ViewBag.Title = "Deactivate";
+}
+
+<h2>Deactivate</h2>
+
+<h3>Are you sure you want to deactivate this?</h3>
+<div>
+    <h4>Creature</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayCreatureTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayCreatureTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayCreatureDietID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayCreatureDietID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatureID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatureID)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> 
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

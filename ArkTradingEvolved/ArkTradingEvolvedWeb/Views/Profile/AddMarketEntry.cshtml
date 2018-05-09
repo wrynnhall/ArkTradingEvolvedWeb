@@ -1,0 +1,54 @@
+﻿@model ArkTradingEvolvedWeb.Models.UserMarketEntryViewModel
+
+
+<h2>Create Market Entry</h2>
+<div>
+	<h4>Market Entry</h4>
+	
+	@using (Html.BeginForm())
+			{
+		<dl class="dl-horizontal">
+
+
+			@Html.AntiForgeryToken()
+			<dt>
+				Collection Entries
+			</dt>
+			<dd>
+				@Html.DropDownListFor(model => model.CollectionEntry.CollectionEntryID,//
+							new SelectList(Model.CollectionEntries, "CollectionEntryID", "Name"),
+							new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.CollectionEntry, "", new { @class = "text-warning" })
+			</dd>
+			<dt>
+				Resource
+			</dt>
+			<dd>
+				@Html.DropDownListFor(model => model.Resource.ResourceID,//
+							new SelectList(Model.Resources, "ResourceID", "ResourceID"),
+							new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.Resource, "", new { @class = "text-warning" })
+			</dd>
+			<dt>
+				Price
+			</dt>
+			<dd>
+				@Html.EditorFor(model => model.Units, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Units, "", new { @class = "text-danger" })
+			</dd>
+
+		</dl>
+				<div class="form-actions no-color">
+					<input type="submit" value="Submit" class="btn btn-default" /> 
+					@Html.ActionLink("Back to Profile", "Index", "Profile", null, new { @class = "btn btn-default" })
+				</div>
+	}
+
+
+
+
+
+
+
+
+</div>

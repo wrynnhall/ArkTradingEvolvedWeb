@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{D4717DC2-0CB6-41B0-B39D-EFFE194D445D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObjects", "DataTransferObjects\DataTransferObjects.csproj", "{4DE05BEA-0094-4774-AEB2-E2585F36339B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{E94841F6-E39A-427C-9A0C-6A2D49A1E2B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayer", "LogicLayer\LogicLayer.csproj", "{5C4ED9BD-080E-4727-BFDE-A325136AEA1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{AB827F1F-E536-451C-AD04-88F427B5A8FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkTradingEvolvedWeb", "ArkTradingEvolvedWeb\ArkTradingEvolvedWeb.csproj", "{94913841-4E8B-4DFA-95E4-75A41360FA92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4717DC2-0CB6-41B0-B39D-EFFE194D445D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4717DC2-0CB6-41B0-B39D-EFFE194D445D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4717DC2-0CB6-41B0-B39D-EFFE194D445D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4717DC2-0CB6-41B0-B39D-EFFE194D445D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DE05BEA-0094-4774-AEB2-E2585F36339B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DE05BEA-0094-4774-AEB2-E2585F36339B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DE05BEA-0094-4774-AEB2-E2585F36339B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DE05BEA-0094-4774-AEB2-E2585F36339B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E94841F6-E39A-427C-9A0C-6A2D49A1E2B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E94841F6-E39A-427C-9A0C-6A2D49A1E2B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E94841F6-E39A-427C-9A0C-6A2D49A1E2B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E94841F6-E39A-427C-9A0C-6A2D49A1E2B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C4ED9BD-080E-4727-BFDE-A325136AEA1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C4ED9BD-080E-4727-BFDE-A325136AEA1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C4ED9BD-080E-4727-BFDE-A325136AEA1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C4ED9BD-080E-4727-BFDE-A325136AEA1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94913841-4E8B-4DFA-95E4-75A41360FA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94913841-4E8B-4DFA-95E4-75A41360FA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94913841-4E8B-4DFA-95E4-75A41360FA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94913841-4E8B-4DFA-95E4-75A41360FA92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5784451-6899-45A0-AD27-0C1372D91803}
+	EndGlobalSection
+EndGlobal

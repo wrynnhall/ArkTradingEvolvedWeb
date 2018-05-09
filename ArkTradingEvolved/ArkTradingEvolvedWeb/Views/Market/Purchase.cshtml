@@ -1,0 +1,119 @@
+﻿@model ArkTradingEvolvedWeb.Models.MarketEntryPurchaseViewModel
+
+
+<h3>Are you sure you want to purchase this?</h3>
+<div>
+	<h4>Purchase Confirmation</h4>
+	<hr />
+	<dl class="dl-horizontal">
+
+
+		<dt>
+			Creature
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.CreatureID)
+		</dd>
+		<dt>
+			Creature Level
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.Level)
+		</dd>
+		<dt>
+			Creature Name
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.Name)
+		</dd>
+		<dt>
+			Creature Health
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.Health)
+		</dd>
+		<dt>
+			Creature Stamina
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.Stamina)
+		</dd>
+		<dt>
+			Creature Oxygen
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.Oxygen)
+		</dd>
+		<dt>
+			Creature Food
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.Food)
+		</dd>
+		<dt>
+			Creature Weight
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.Weight)
+		</dd>
+		<dt>
+			Creature Base Damage
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.BaseDamage)
+		</dd>
+		<dt>
+			Creature Movement Speed
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.MovementSpeed)
+		</dd>
+		<dt>
+			Creature Torpor
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.Torpor)
+		</dd>
+		<dt>
+			Creature Imprint
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.CollectionEntry.Imprint)
+		</dd>
+		<dt>
+			Resource
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.MarketEntry.ResourceID)
+		</dd>
+		<dt>
+			Price
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.MarketEntryDetails.MarketEntry.ResourceAmount)
+		</dd>
+		<hr />
+		
+
+		
+			
+		
+
+	</dl>
+	@using (Html.BeginForm())
+			{
+		@Html.AntiForgeryToken()
+		<div class="form-group">
+			@Html.HiddenFor(model => model.MarketEntryDetails.MarketEntry.MarketEntryID)
+
+
+		</div>
+
+				<div class="form-actions no-color">
+					<input type="submit" value="Confirm Purchase" class="btn btn-default" />
+					@Html.ActionLink("Back to Profile", "Index", "Profile", null, new { @class = "btn btn-default" })
+				</div>
+			}
+
+
+</div>

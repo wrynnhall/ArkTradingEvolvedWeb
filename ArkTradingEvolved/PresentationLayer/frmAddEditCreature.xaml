@@ -1,0 +1,87 @@
+﻿<Window x:Class="PresentationLayer.frmAddEditCreature"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer"
+        mc:Ignorable="d"
+        Title="frmAddEditCreature" Height="220" Width="250" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Content="Creature:"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+               Margin="30 0 0 0"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               Name="lblHeader">
+        </Label>
+        <Label Content="Creature Name:"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               Margin="0 0 0 0"
+               Grid.Row="1">
+        </Label>
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Height="25"
+                 Margin="0 0 15 2"
+                 Name="txtCreatureName"
+                 VerticalAlignment="Center">
+        </TextBox>
+        <Label Content="Creature Type:"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               Margin="0 0 0 0"
+               Grid.Row="2">
+        </Label>
+        <ComboBox Grid.Row="2"
+                  Grid.Column="1"
+                  Height="25"
+                  Margin="0 0 15 0"
+                  Name="cboTypes">
+        </ComboBox>
+
+        <Label Content="Creature Diet:"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               Margin="0 0 0 0"
+               Grid.Row="3">
+        </Label>
+
+        <ComboBox Grid.Row="3"
+                  Grid.Column="1"
+                  Height="25"
+                  Margin="0 0 15 0"
+                  Name="cboDiets">
+        </ComboBox>
+
+        <Button Content="Add"
+                Width="50"
+                Height="25"
+                Grid.Row="4"
+                HorizontalAlignment="Right"
+                Margin="0 0 10 0"
+                Name="btnAddEdit" Click="btnAddEdit_Click">
+        </Button>
+        <Button Content="Cancel"
+                Width="50"
+                Height="25"
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Margin="0 0 10 0"
+                Name="btnCancel" Click="btnCancel_Click">
+        </Button>
+    </Grid>
+</Window>

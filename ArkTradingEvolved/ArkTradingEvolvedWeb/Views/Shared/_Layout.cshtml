@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ark: Trading Evolved</title>
+   
+    @Styles.Render("~/Content/css")
+    
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+   
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Ark Trading Evolved", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    
+
+                    @if (User.IsInRole("General") || User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Profile", "Index", "Profile")</li>
+                        <li>@Html.ActionLink("Market", "Index", "Market")</li>
+                    }
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="navbar-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Administration
+                            </a>
+                            <ul class="nav dropdown-menu">
+                                <li>@Html.ActionLink("Creatures", "Index", "Creature")</li>
+                                <li>@Html.ActionLink("Creature Types", "Index", "CreatureType")</li>
+                                <li>@Html.ActionLink("Creature Diet", "Index", "CreatureDiet")</li>
+                                <li>@Html.ActionLink("Resources", "Index", "Resource")</li>
+                            </ul>
+                        </li>
+                    }
+
+                    
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Ark Trading Evolved</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+	<style>
+		body {
+			background-color: #316b6f;
+			color: white;
+		}
+
+		.body-content a:link {
+			text-decoration: none;
+			color: black;
+		}
+
+		.body-content a:visited {
+			text-decoration: none;
+			color: black;
+		}
+
+		.body-content a:hover {
+			text-decoration: none;
+			color: black;
+		}
+
+
+		.body-content {
+			margin-top: 25px;
+			
+		}
+
+		.navbar-inverse {
+			background-color: #303b53 ;
+		}
+	</style>
+</body>
+</html>

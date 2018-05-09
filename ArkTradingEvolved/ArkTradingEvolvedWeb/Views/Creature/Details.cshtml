@@ -1,0 +1,50 @@
+﻿@model ArkTradingEvolvedWeb.Models.CreatureViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Creature</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayCreatureID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayCreatureID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayCreatureTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayCreatureTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayCreatureDietID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayCreatureDietID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DisplayCreatureID }, new { @class = "btn btn-default" }) 
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>

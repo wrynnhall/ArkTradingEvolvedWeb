@@ -1,0 +1,56 @@
+﻿@model ArkTradingEvolvedWeb.Models.UserViewModel
+
+<h3>Collections <span class="head-link">@Html.ActionLink("Add", "Create", "Collections", new { }, new { @class = "btn btn-default" })</span></h3> 
+
+<hr />
+<div class="row">
+        @foreach (var item in Model.Collections)
+        {
+
+            
+                <div class="col-xs-3 collectionContainer">
+                    <a href="@Url.Action("CollectionEntries", "Profile", new { id = item.CollectionID })">
+                        <h3>@item.Name</h3>
+                    </a>
+                    @Html.ActionLink("Edit", "Edit", "Collections", new { id = item.CollectionID }, new { @class="btn btn-default" })
+                    @Html.ActionLink("Delete", "Delete", "Collections", new { id = item.CollectionID }, new { @class = "btn btn-default" })
+                </div>
+            
+        }
+</div>
+
+<div class="entries">
+    
+    @if (Model.CollectionEntries != null)
+    {
+        <h3>Entries <span class="head-link">@Html.ActionLink("Add", "Create", "CollectionEntry", new { id = Model.SelectedCollection }, new { @class = "btn btn-default" })</span></h3>
+        <hr />
+        foreach (var item in Model.CollectionEntries)
+        {
+            <div class="row row-eq-height entry-row">
+
+                <div class="col-md-3 entryPicContainer">
+                    <img class="entryPic" src="~/resources/images/default_dino.png" />
+                </div>
+                <div class="col-md-9">
+                    <h3>@item.CollectionEntry.Name 
+                        <span class="head-link">@Html.ActionLink("Edit", "Edit", "CollectionEntry", new { id = item.CollectionEntry.CollectionEntryID }, new { @class = "btn btn-default" })</span>
+                        <span class="head-link">@Html.ActionLink("Delete", "Delete", "CollectionEntry", new { id = item.CollectionEntry.CollectionEntryID }, new { @class = "btn btn-default" })</span>
+                    </h3>
+                    <h4>@item.Creature.CreatureID | @item.Creature.CreatureTypeID | @item.Creature.CreatureDietID</h4>
+
+                    <p>
+                        Level: @item.CollectionEntry.Level<br />
+                        Health: @item.CollectionEntry.Health<br />
+                        Damage: @item.CollectionEntry.BaseDamage<br />
+                        Imprint: @item.CollectionEntry.Imprint
+                    </p>
+                </div>
+
+                
+            </div>
+            <hr />
+        }
+
+    }
+</div>

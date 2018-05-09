@@ -1,0 +1,606 @@
+﻿<Window x:Class="PresentationLayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer"
+        mc:Ignorable="d"
+        Title="Ark: Trading Evolved" Height="768" Width="1024" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="175"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" 
+                   Grid.Column="1" 
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Bottom" 
+                   Margin="10 10 0 10"
+                   FontWeight="Bold"
+                   Name="lblUsername">Username:
+            </Label>
+            <TextBox Grid.Row="0" 
+                     Grid.Column="2" 
+                     Margin="10 10 10 5" 
+                     Padding="0 5 10 0" 
+                     FontSize="14"
+                     Name="txtUsername">
+
+            </TextBox>
+            <Label Grid.Row="1" 
+                   Grid.Column="1" 
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Bottom" 
+                   Margin="10 10 0 10"
+                   FontWeight="Bold"
+                   Name="lblPassword"
+                   Content="Password:">
+            </Label>
+            <PasswordBox Grid.Row="1" 
+                         Grid.Column="2" 
+                         Margin="10 5 10 10" 
+                         Padding="0 5 10 0" 
+                         FontSize="14"
+                         Name="txtPassword">
+
+            </PasswordBox>
+
+
+
+            <Button Grid.Row="2" 
+                    Grid.Column="4" 
+                    Margin="0 5 0 10"
+                    Width="150"
+                    Height="35"
+                    Name="btnLogin"
+                    Content="Login"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Left" Click="btnLogin_Click">
+            </Button>
+        </Grid>
+        <Image Grid.Row="1"
+               >
+            <Image.Source>
+                <BitmapImage UriSource="/images/ARK_LOGO.png"
+                             DecodePixelHeight="500"
+                             ></BitmapImage>
+            </Image.Source>
+        </Image>
+        <TabControl Grid.Row="1" 
+                    Name="tabsetMain" 
+                    Margin="10 10 10 10" SelectionChanged="tabsetMain_SelectionChanged">
+            <TabItem Name="tabCollection" Header="Collection" Height="22" VerticalAlignment="Top">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" 
+                           Grid.Column="0"
+                           Margin="10 10 10 0"
+                           Name="lblCollection"
+                           Content="Collections" Grid.ColumnSpan="2">
+                    </Label>
+                    <DataGrid Name="dgCollection" 
+                              Grid.Row="0" 
+                              Grid.Column="0"
+                              Height="400"
+                              VerticalAlignment="Bottom"
+                              Margin="10 0 10 0" MouseDoubleClick="dgCollection_MouseDoubleClick"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding _collectionList}" Grid.ColumnSpan="2"
+                              >
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Add"
+                            Width="70"
+                            Height="25"
+                            Margin="90,10,90,0"
+                            VerticalAlignment="Top"
+                            Name="btnAddCollection" Click="btnAddCollection_Click" Grid.ColumnSpan="2">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Edit"
+                            Width="70"
+                            Height="25"
+                            Margin="10,10,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Name="btnEditCollection" Click="btnEditCollection_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="1"
+                            Content="Deactivate"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnDeactivateCollection" Click="btnDeactivateCollection_Click">
+                    </Button>
+
+                    <Label Grid.Row="0" 
+                           Grid.Column="2"
+                           Margin="10 10 10 0"
+                           Name="lblCollectionEntries"
+                           Content="Collection Entries">
+                    </Label>
+                    <DataGrid Name="dgCollectionEntries" 
+                              Grid.Row="0" 
+                              Grid.Column="2"
+                              Height="400"
+                              VerticalAlignment="Bottom"
+                              Margin="10 0 10 0"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding _collectionEntryList}"
+                              >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding CollectionEntry.Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Creature ID" Binding="{Binding CollectionEntry.CreatureID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Creature Type" Binding="{Binding Creature.CreatureTypeID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Creature Diet" Binding="{Binding Creature.CreatureDietID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Level" Binding="{Binding CollectionEntry.Level}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Health" Binding="{Binding CollectionEntry.Health}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Damage" Binding="{Binding CollectionEntry.BaseDamage}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Imprint" Binding="{Binding CollectionEntry.Imprint}" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
+                            Content="Details"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,330,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnDetails" Click="btnDetails_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
+                            Content="Edit"
+                            Width="70"
+                            Height="25"
+                            Margin="0 10 250 0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnEdit" Click="btnEdit_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
+                            Content="Add"
+                            Width="70"
+                            Height="25"
+                            Margin="0 10 170 0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnAdd" Click="btnAdd_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
+                            Content="Sell"
+                            Width="70"
+                            Height="25"
+                            Margin="0 10 90 0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnSell" Click="btnSell_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
+                            Content="Deactivate"
+                            Width="70"
+                            Height="25"
+                            Margin="0 10 10 0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnDeactivate" Click="btnDeactivate_Click">
+                    </Button>
+
+                </Grid>
+
+            </TabItem>
+
+
+
+            <TabItem Name="tabMarket" Header="Market" GotFocus="tabMarket_GotFocus">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+
+                    <Label Grid.Row="0" 
+                           Grid.Column="0"
+                           Margin="10 10 10 0"
+                           Content="Market Entries">
+                    </Label>
+                    <DataGrid Name="dgMarketEntries" 
+                              Grid.Row="0"
+                              Height="400"
+                              VerticalAlignment="Bottom"
+                              Margin="10 0 10 0"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding _marketEntryList}" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Creature" Binding="{Binding CollectionEntry.CreatureID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Level" Binding="{Binding CollectionEntry.Level}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Name" Binding="{Binding CollectionEntry.Name}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="User" Binding="{Binding User.Gamertag}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Resource" Binding="{Binding MarketEntry.ResourceID}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Units" Binding="{Binding MarketEntry.ResourceAmount}" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Purchase"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnPurchase" Click="btnPurchase_Click">
+                    </Button>
+                </Grid>
+            </TabItem>
+
+
+
+            <TabItem Name="tabMarketEntries" Header="My Market Entries" GotFocus="tabMarketEntries_GotFocus">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="600"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" 
+                           Grid.Column="0"
+                           Margin="10 10 10 0"
+                           Content="My Market Entries">
+                    </Label>
+                    <DataGrid Name="dgMyMarketEntries" 
+                              Grid.Row="0" 
+                              Grid.Column="0"
+                              Height="400"
+                              VerticalAlignment="Bottom"
+                              Margin="10 0 10 0"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding _myMarketEntryList}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Creature" Binding="{Binding CollectionEntry.CreatureID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Level" Binding="{Binding CollectionEntry.Level}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Name" Binding="{Binding CollectionEntry.Name}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Resource" Binding="{Binding MarketEntry.ResourceID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Units" Binding="{Binding MarketEntry.ResourceAmount}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Status" Binding="{Binding MarketEntry.MarketEntryStatusID}" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Remove"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,100,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnRemoveMarketEntry" Click="btnRemoveMarketEntry_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Edit"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,190,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnEditMarketEntry" Click="btnEditMarketEntry_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="View Details"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,280,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnViewMarketEntry" Click="btnViewMarketEntry_Click">
+                    </Button>
+                    
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Message"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnMessagePurchaser" Click="btnMessagePurchaser_Click">
+                    </Button>
+
+
+
+                    <Label Grid.Row="0" 
+                           Grid.Column="1"
+                           Margin="10 10 10 0"
+                           Content="My Purchases">
+                    </Label>
+                    <DataGrid Name="dgPurchases" 
+                              Grid.Row="0" 
+                              Grid.Column="1"
+                              Height="400"
+                              VerticalAlignment="Bottom"
+                              Margin="10 0 10 0"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding _purchaseList}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Creature" Binding="{Binding MarketEntryDetails.CollectionEntry.CreatureID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Level" Binding="{Binding MarketEntryDetails.CollectionEntry.Level}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Name" Binding="{Binding MarketEntryDetails.CollectionEntry.Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Resource" Binding="{Binding MarketEntryDetails.MarketEntry.ResourceID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Units" Binding="{Binding MarketEntryDetails.MarketEntry.ResourceAmount}" Width="*"></DataGridTextColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Button Grid.Row="1"
+                            Grid.Column="1"
+                            Content="Message"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,100,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnMessageSeller" Click="btnMessageSeller_Click">
+                    </Button>
+                    
+                    <Button Grid.Row="1"
+                            Grid.Column="1"
+                            Content="Complete"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnMarkCompleted" Click="btnMarkCompleted_Click">
+                    </Button>
+                </Grid>
+            </TabItem>
+
+
+
+            <TabItem Name="tabCreatures" Header="Creatures">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="352"></ColumnDefinition>
+                        <ColumnDefinition Width="248"/>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" 
+                           Grid.Column="0"
+                           Margin="10 10 10 0"
+                           Content="Creatures" Grid.ColumnSpan="2">
+                    </Label>
+                    <DataGrid Name="dgCreatures" 
+                              Grid.Row="0" 
+                              Grid.Column="0"
+                              Height="400"
+                              VerticalAlignment="Bottom"
+                              Margin="10 0 10 0"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding _creatureList}" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Creature Name" Binding="{Binding CreatureID}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Creature Type" Binding="{Binding CreatureTypeID}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Creature Diet" Binding="{Binding CreatureDietID}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Active" Binding="{Binding Active}" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Add"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,32,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnAddCreature" Click="btnAddCreature_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Edit"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,190,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnEditCreature" Click="btnEditCreature_Click" Grid.ColumnSpan="2">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="1"
+                            Content="View Details"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,100,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnViewCreature" Click="btnViewCreature_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="1"
+                            Content="Toggle Active"
+                            Width="75"
+                            Height="25"
+                            Margin="0,10,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnToggleCreatureActive" Click="btnToggleCreatureActive_Click">
+                    </Button>
+
+                    <Grid Grid.Row="0"
+                              Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" 
+                           Grid.Column="0"
+                           Margin="10 10 10 0"
+                           Content="Creature Type">
+                        </Label>
+                        <DataGrid Name="dgCreatureTypes" 
+                              Grid.Row="0" 
+                              Grid.Column="0"
+                              Height="165"
+                              VerticalAlignment="Bottom"
+                              Margin="10 0 10 0"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding _creatureTypeList}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Creature Type" Binding="{Binding CreatureTypeID}" Width="*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Active" Binding="{Binding Active}" Width="*"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Add"
+                            Width="70"
+                            Height="25"
+                            Margin="0,5,190,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnAddCreatureType" Click="btnAddCreatureType_Click">
+                        </Button>
+                        <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Edit"
+                            Width="70"
+                            Height="25"
+                            Margin="0,5,100,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnEditCreatureType" Click="btnEditCreatureType_Click">
+                        </Button>
+
+                        <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="Toggle Active"
+                            Width="75"
+                            Height="25"
+                            Margin="0,5,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnToggleCreatureTypeActive" Click="btnToggleCreatureTypeActive_Click">
+                        </Button>
+
+                        <Label Grid.Row="2" 
+                           Grid.Column="0"
+                           Margin="10 10 10 0"
+                           Content="Creature Diet">
+                        </Label>
+                        <DataGrid Name="dgCreatureDiets" 
+                              Grid.Row="2" 
+                              Grid.Column="0"
+                              Height="165"
+                              VerticalAlignment="Bottom"
+                              Margin="10 0 10 0"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding _creatureDietList}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Creature Diet" Binding="{Binding CreatureDietID}" Width="*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Active" Binding="{Binding Active}" Width="*"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+
+                    </Grid>
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
+                            Content="Add"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,190,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnAddCreatureDiet" Click="btnAddCreatureDiet_Click">
+                    </Button>
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
+                            Content="Edit"
+                            Width="70"
+                            Height="25"
+                            Margin="0,10,100,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnEditCreatureDiet" Click="btnEditCreatureDiet_Click">
+                    </Button>
+
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
+                            Content="Toggle Active"
+                            Width="75"
+                            Height="25"
+                            Margin="0,10,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Name="btnToggleCreatureDietActive" Click="btnToggleCreatureDietActive_Click">
+                    </Button>
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+        <StatusBar Grid.Row="2" Height="45" Name="statusMain" Background="#FFF1EDED">
+            <StatusBarItem Content="Sign up, or Sign in to enter"></StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

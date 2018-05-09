@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DataTransferObjects.CreatureType>
+
+
+<h2>Creature Types</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatureTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatureTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.CreatureTypeID }, new { @class = "btn btn-default" }) 
+                @Html.ActionLink("Details", "Details", new { id=item.CreatureTypeID }, new { @class = "btn btn-default" }) 
+                @Html.ActionLink("Deactivate", "Delete", new { id=item.CreatureTypeID }, new { @class = "btn btn-default" }) 
+				@Html.ActionLink("Activate", "Activate", new { id = item.CreatureTypeID }, new { @class = "btn btn-default" })
+            </td>
+        </tr>
+    }
+    
+    </table>
+

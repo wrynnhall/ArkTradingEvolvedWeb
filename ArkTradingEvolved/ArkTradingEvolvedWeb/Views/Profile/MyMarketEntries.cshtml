@@ -1,0 +1,56 @@
+﻿@model ArkTradingEvolvedWeb.Models.UserViewModel
+
+<h3>Market Entries @Html.ActionLink("Add Market Entry", "AddMarketEntry", null, new { @class = "btn btn-default" })</h3>
+
+<table class="table">
+	<tr>
+		<th>
+			Creature
+		</th>
+		<th>
+			Level
+		</th>
+		<th>
+			Name
+		</th>
+		<th>
+			Resource
+		</th>
+		<th>
+			Price
+		</th>
+		<th>
+			Status
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model.MarketEntries)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.CollectionEntry.CreatureID)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CollectionEntry.Level)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CollectionEntry.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.MarketEntry.ResourceID)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.MarketEntry.ResourceAmount)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.MarketEntry.MarketEntryStatusID)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "EditMarketEntry", new { id = item.MarketEntry.MarketEntryID }, new { @class = "btn btn-default" }) 
+				@Html.ActionLink("Remove", "RemoveMarketEntry", new { id = item.MarketEntry.MarketEntryID }, new { @class = "btn btn-default" })
+			</td>
+		</tr>
+	}
+
+</table>

@@ -1,0 +1,32 @@
+﻿@model ArkTradingEvolvedWeb.Models.CreatureDietViewModel
+
+<h2>Creature Diet Detail</h2>
+    <div>
+        <h4>Creature Diet</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DisplayCreatureDietID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DisplayCreatureDietID)
+            </dd>
+    
+            
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Active)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CreatureDietID }, new { @class = "btn btn-default" }) 
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+    </p>
+

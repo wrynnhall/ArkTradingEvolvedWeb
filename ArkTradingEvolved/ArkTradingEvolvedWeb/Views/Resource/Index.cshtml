@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DataTransferObjects.Resource>
+
+<h2>Resources</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ResourceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResourceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ResourceID }, new { @class = "btn btn-default" }) 
+                @Html.ActionLink("Details", "Details", new { id=item.ResourceID }, new { @class = "btn btn-default" }) 
+                @Html.ActionLink("Deactivate", "Delete", new { id=item.ResourceID }, new { @class = "btn btn-default" }) 
+                @Html.ActionLink("Activate", "Activate", new { id = item.ResourceID }, new { @class = "btn btn-default" })
+            </td>
+        </tr>
+    }
+    
+    </table>
+

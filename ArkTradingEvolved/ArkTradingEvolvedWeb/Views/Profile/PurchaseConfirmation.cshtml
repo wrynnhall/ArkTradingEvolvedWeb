@@ -1,0 +1,71 @@
+﻿@model ArkTradingEvolvedWeb.Models.PurchaseCompleteViewModel
+
+<h3>Are you sure you want to purchase this?</h3>
+<div>
+	<h4>Purchase Confirmation</h4>
+	<hr />
+	<dl class="dl-horizontal">
+
+
+		<dt>
+			Creature
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.PurchaseDetails.MarketEntryDetails.CollectionEntry.CreatureID)
+		</dd>
+		<dt>
+			Creature Level
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.PurchaseDetails.MarketEntryDetails.CollectionEntry.Level)
+		</dd>
+		<dt>
+			Creature Name
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.PurchaseDetails.MarketEntryDetails.CollectionEntry.Name)
+		</dd>
+		<dt>
+			Resource
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.PurchaseDetails.MarketEntryDetails.MarketEntry.ResourceID)
+		</dd>
+		<dt>
+			Price
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.PurchaseDetails.MarketEntryDetails.MarketEntry.ResourceAmount)
+		</dd>
+		<hr />
+		<dt>
+			Collection to Add Purchase
+		</dt>
+
+		<dd>
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+					<div class="form-group">
+						@Html.HiddenFor(model => model.PurchaseDetails.MarketEntryDetails.MarketEntry.MarketEntryID)
+						
+						<div>
+							@Html.DropDownListFor(model => model.CollectionToAddTo,
+							new SelectList(Model.Collections, "CollectionID", "Name"),
+							new { @class = "form-control" })
+						</div>
+						@Html.ValidationMessageFor(model => model.CollectionToAddTo, "", new { @class = "text-danger" })
+					</div>
+
+					<div class="form-actions no-color">
+						<input type="submit" value="Confirm Purchase" class="btn btn-default" /> 
+						@Html.ActionLink("Back to Profile", "Index", "Profile", null, new { @class="btn btn-default" })
+					</div>
+			}
+		</dd>
+
+	</dl>
+
+	
+</div>
+

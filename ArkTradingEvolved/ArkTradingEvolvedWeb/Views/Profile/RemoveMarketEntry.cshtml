@@ -1,0 +1,48 @@
+﻿@model ArkTradingEvolvedWeb.Models.UserMarketEntryViewModel
+
+
+<h3>Are you sure you want to remove this?</h3>
+<div>
+	<h4>Market Entry</h4>
+	<hr />
+	<dl class="dl-horizontal">
+
+		<dt>
+			Creature
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.CollectionEntry.CreatureID)
+		</dd>
+		<dt>
+			Creature Level
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.CollectionEntry.Level)
+		</dd>
+		<dt>
+			Creature Name
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.CollectionEntry.Name)
+		</dd>
+
+		<dt>
+			Resource
+		</dt>
+		<dd>
+				@Html.DisplayFor(model => model.Resource.ResourceID)
+		</dd>
+		<dt>
+			Price
+		</dt>
+		<dd>
+				@Html.DisplayFor(model => model.Units)
+		</dd>
+
+	</dl>
+	<div class="form-actions no-color">
+		@Html.ActionLink("Remove", "RemoveMarketEntryConfirmed", "Profile", new { id = Model.MarketEntryID}, new { @class = "btn btn-default" }) 
+		@Html.ActionLink("Back to Profile", "Index", "Profile", null, new { @class = "btn btn-default" })
+	</div>
+			
+	

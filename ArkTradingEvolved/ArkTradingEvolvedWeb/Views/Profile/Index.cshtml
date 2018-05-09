@@ -1,0 +1,44 @@
+﻿@model ArkTradingEvolvedWeb.Models.UserViewModel
+
+
+<script src="~/Scripts/Profile.js"></script>
+<link href="~/Content/Profile.css" rel="stylesheet" />
+<div>
+    <h4>My Profile</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <div class="profilePicContainer">
+                <img class="profilePic" src="~/resources/images/default_profile.jpg" />
+            </div>
+            <div class="profileInfoContainer">
+                <p><span class="info">Name:</span><br /> @Model.User.FullName</p>
+                <p><span class="info">Email:</span><br /> @Model.User.Email</p>
+                <p><span class="info">Gamertag:</span><br /> @Model.User.Gamertag</p>
+                
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div id="tabs">
+                <ul>
+                    <li><a href="#collectionTab">Collections</a></li>
+                    <li><a href="#marketTab">My Market Items</a></li>
+                    <li><a href="#purchasesTab">Purchaces</a></li>
+                </ul>
+                <div id="collectionTab">
+                   @*@Html.Action("Collection", "Profile", new { userID = Model.UserID })*@ 
+                    @Html.Partial("~/Views/Profile/Collection.cshtml")
+                </div>
+                <div id="marketTab">
+                    @Html.Partial("~/Views/Profile/MyMarketEntries.cshtml")
+                </div>
+                <div id="purchasesTab">
+                    @Html.Partial("~/Views/Profile/Purchases.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+    

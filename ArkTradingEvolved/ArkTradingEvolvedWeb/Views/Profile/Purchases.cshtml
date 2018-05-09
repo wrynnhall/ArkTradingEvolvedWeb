@@ -1,0 +1,55 @@
+﻿@model ArkTradingEvolvedWeb.Models.UserViewModel
+
+<h3>Purchases</h3>
+<table class="table">
+	<tr>
+		<th>
+			Creature
+		</th>
+		<th>
+			Level
+		</th>
+		<th>
+			Name
+		</th>
+		<th>
+			Gamertag
+		</th>
+		<th>
+			Resource
+		</th>
+		<th>
+			Price
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model.Purchases)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.CollectionEntry.CreatureID)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CollectionEntry.Level)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CollectionEntry.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.User.Gamertag)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.MarketEntry.ResourceID)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.MarketEntry.ResourceAmount)
+			</td>
+			<td>
+				@Html.ActionLink("Complete Purchase", "PurchaseConfirmation", new { id = item.MarketEntry.MarketEntryID }, new { @class = "btn btn-default" })
+			</td>
+		</tr>
+	}
+
+</table>
+
